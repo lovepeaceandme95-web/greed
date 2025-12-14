@@ -702,15 +702,16 @@
       }
     }
 
-    // 事件：点击屏幕攻击（排除按钮点按）
-    function onGlobalAttack(e) {
-      const target = e.target;
-      if (target.closest('.btn')) return;
-      destroyOneHP();
-    }
-    window.addEventListener('click', onGlobalAttack);
-    window.addEventListener('touchstart', onGlobalAttack, { passive: true });
+  
+// 事件：点击屏幕攻击（排除按钮点按）
+function onGlobalAttack(e) {
+  const target = e.target;
+  if (target.closest('.btn')) return;
+  destroyOneHP();
+}
 
+// 统一使用 pointer 事件，避免 touch + click 双触发
+window.addEventListener('pointerdown', onGlobalAttack, { passive: true });
     // 其他事件
     resetBtn.addEventListener('click', resetHP);
 
