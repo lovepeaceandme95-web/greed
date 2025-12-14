@@ -469,7 +469,7 @@
       bgm.volume = 1;
       bgm.play().catch(() => { triedAutoPlay = false; });
     }
-    ['click', 'touchstart', 'pointerdown', 'keydown'].forEach(evt =>
+    ['click', 'touchend', 'pointerdown', 'keydown'].forEach(evt =>
       window.addEventListener(evt, ensureAutoPlay, { once: true, passive: true })
     );
 
